@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ZenERP</title>
+    <link rel="shortcut icon" href="/Icons/erp.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/CSS/cliente.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31"></script>
+
+</head>
+
+<body>
+    <div class="headr">
+        <header>
+            <div class="site-name">
+                <img src="/Icons/erp.png" id="icons" alt="" srcset="">
+                ZenERP
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dash.html">Início</a></li>
+                    <li><a href="produtos.html">Produto</a></li>
+                    <li><a href="index.html">Sair</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div id="app" class="container">
+        <h1 id="titleZen">ZenClientes  <img id="icons2" src="/Icons/cliente.png" alt=""></h1>
+        <div class="produto-list">
+            <div class="produto-header">
+                <div class="produto-col">Nome do Cliente</div>
+                <div class="produto-col">Telefone</div>
+                <div class="produto-col">Ações</div>
+            </div>
+            <ul id="clientes">
+                <li v-for="cliente in clientes">
+                    <div class="produto-col">{{ cliente.nome }}</div>
+                    <div class="produto-col">{{ `(${cliente.telefone.slice(0,2)}) ${cliente.telefone.slice(3,12)} ` }}</div>
+                    <div class="produto-col">
+                        <button v-on:click="visualizarCliente(cliente)">Visualizar</button>
+                        <button v-on:click="editarCliente(cliente)">Editar</button>
+                        <button @click="deletarCliente(cliente)">Deletar</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <form id="cliente-add" @submit="addCliente">
+            <input class="addP" type="text" v-model="newCliente.nome" placeholder="Nome do Cliente" required>
+            <input class="addP" type="text" v-model="newCliente.cpfOuCnpj" placeholder="CPF/CNPJ" required>
+            <input class="addP" type="text" v-model="newCliente.email" placeholder="Email" required>
+            <input class="addP" type="text" v-model="newCliente.telefone" placeholder="Telefone Com DDD" required>
+            <button class="addP" id="addP2" type="submit">Adicionar Cliente</button>
+        </form>
+
+        <div id="modall" class="modall" v-if="clienteSelecionado">
+            <div class="modall-content">
+                <button class="close" @click="fecharModal">&times;</button>
+                <div class="produto-header">
+                    <div class="produto-col">Id do Cliente</div>
+                    <div class="produto-col">Nome do Cliente</div>
+                    <div class="produto-col">CPF/CNPJ</div>
+                    <div class="produto-col">Email</div>
+                    <div class="produto-col">Telefone</div>
+                    <div class="produto-col">Data de Cadastro</div>
+                </div>
+                <ul id="clientes">
+                    <li>
+                        <div class="produto-col2">{{ clienteSelecionado.id }}</div>
+                        <div class="produto-col2">{{ clienteSelecionado.nome }}</div>
+                        <div class="produto-col2">{{ clienteSelecionado.cpfOuCnpj }}</div>
+                        <div class="produto-col2">{{ clienteSelecionado.email }}</div>
+                        <div class="produto-col2">{{ `(${clienteSelecionado.telefone.slice(0,2)}) ${clienteSelecionado.telefone.slice(3,12)} ` }}</div>
+                        <div class="produto-col2">{{ clienteSelecionado.dataCadastro }}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="modal2" class="modal2" v-if="clienteSelecionado">
+            <div class="modal-content2">
+                <button class="close2" @click="fecharModal2">&times;</button>
+                <div class="produto-header">
+                    <div class="produto-col">Nome do Cliente</div>
+                    <div class="produto-col">CPF/CNPJ</div>
+                    <div class="produto-col">Email</div>
+                    <div class="produto-col">Telefone</div>
+                </div>
+                <ul id="clientes">
+                    <li>
+                        <form @submit.prevent="confirmaEdicao(clienteSelecionado)">
+                            <input class="addP" type="text" v-model="clienteSelecionado.nome"
+                                placeholder="Nome do Cliente" required>
+                            <input class="addP" type="text" v-model="clienteSelecionado.cpfOuCnpj"
+                                placeholder="CPF/CNPJ" required>
+                            <input class="addP" type="text" v-model="clienteSelecionado.email" placeholder="Email"
+                                required>
+                            <input class="addP" type="text" v-model="clienteSelecionado.telefone" placeholder="Telefone"
+                                required>
+                            <button class="addP" id="addP2" type="submit">Confirmar</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/JS/cliente.js" type="module"></script>
+</body>
+
+</html>

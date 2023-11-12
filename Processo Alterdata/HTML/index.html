@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ZenERP</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="shortcut icon" href="/Icons/erp.png" type="image/x-icon">
+    <script src="https://unpkg.com/vue@3.2.31"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.3.0/crypto-js.min.js"></script>
+
+
+</head>
+<body>
+    <div id="app">
+        
+
+        <div class="login-container">
+            <img src="/Icons/erp.png" id="Icon" alt="" srcset="">
+            <h2> 
+                ZenERP
+            </h2>
+
+            <form @submit.prevent="login">
+
+                <div class="form-group">
+                    <input placeholder="Email" type="text" id="username" v-model="username" required>
+                </div>
+
+                <div class="form-group">
+                    <input placeholder="Senha" type="password" id="password" v-model="password" required>
+                </div>
+
+                <button type="submit">Entrar</button>
+
+            </form>
+
+            <div class="login-feedback">
+                {{ loginMessage }}
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p id="criador">&copy; 2023 Iago Lucio</p>
+    </footer>
+    
+    <script src="/JS/main.js"></script>
+</body>
+</html>

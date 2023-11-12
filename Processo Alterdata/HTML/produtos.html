@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ZenERP</title>
+    <link rel="shortcut icon" href="/Icons/erp.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/CSS/produto.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31"></script>
+
+</head>
+
+<body>
+    <div class="headr">
+        <header>
+            <div class="site-name">
+                <img src="/Icons/erp.png" id="icons" alt="" srcset="">
+                ZenERP
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dash.html">Início</a></li>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="index.html">Sair</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div id="app" class="container">
+        <h1 id="titleZen">ZenEstoque  <img id="icons2" src="/Icons/estoque-pronto.png" alt=""></h1>
+        <div class="produto-list">
+            <div class="produto-header">
+                <div class="produto-col">Nome do Produto</div>
+                <div class="produto-col">Preço</div>
+                <div class="produto-col">Quantidade</div>
+                <div class="produto-col">Vl.Total em estoque</div>
+                <div class="produto-col">Ações</div>
+            </div>
+            <ul id="produtos">
+                <li v-for="produto in produtos">
+                    <div class="produto-col">{{ produto.nome }}</div>
+                    <div class="produto-col">R$ {{ produto.valor }}</div>
+                    <div class="produto-col">{{ produto.quantidadeEstoque }}</div>
+                    <div class="produto-col">R$ {{ (produto.quantidadeEstoque * produto.valor).toLocaleString('pt-BR', {
+                        minimumFractionDigits: 2 }) }}</div>
+                    <div class="produto-col">
+                        <button v-on:click="visualizarProduto(produto)">Visualizar</button>
+                        <button v-on:click="editarProduto(produto)">Editar</button>
+                        <button @click="deletarProduto(produto)">Deletar</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <form id="produto-add" @submit="addProduto">
+            <input class="addP" type="text" v-model="newProduto.nome" placeholder="Nome do Produto" required>
+            <input class="addP" type="number" v-model="newProduto.valor" placeholder="Preço do Produto" required>
+            <input class="addP" type="number" v-model="newProduto.quantidadeEstoque" placeholder="Quantidade do Produto"
+                required>
+            <button class="addP" id="addP2" type="submit">Adicionar Produto</button>
+        </form>
+
+        <div id="modall" class="modall" v-if="produtoSelecionado">
+            <div class="modall-content">
+                <button class="close" @click="fecharModal">&times;</button>
+                <div class="produto-header">
+                    <div class="produto-col">Id do Produto</div>
+                    <div class="produto-col">Nome do Produto</div>
+                    <div class="produto-col">Preço</div>
+                    <div class="produto-col">Quantidade</div>
+                    <div class="produto-col">Vl.Total em estoque</div>
+                    <div class="produto-col">Data de Cadastro</div>
+                </div>
+                <ul id="produtos">
+                    <li>
+                        <div class="produto-col2">{{ produtoSelecionado.id }}</div>
+                        <div class="produto-col2">{{ produtoSelecionado.nome }}</div>
+                        <div class="produto-col2">R$ {{ produtoSelecionado.valor }}</div>
+                        <div class="produto-col2">{{ produtoSelecionado.quantidadeEstoque }}</div>
+                        <div class="produto-col2">R$ {{ (produtoSelecionado.quantidadeEstoque *
+                            produtoSelecionado.valor).toLocaleString('pt-BR', { minimumFractionDigits: 2 }) }}</div>
+                        <div class="produto-col2">{{ produtoSelecionado.dataCadastro}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="modal2" class="modal2" v-if="produtoSelecionado">
+            <div class="modal-content2">
+                <button class="close2" @click="fecharModal2">&times;</button>
+                <div class="produto-header">
+                    <div class="produto-col">Nome do Produto</div>
+                    <div class="produto-col">Preço</div>
+                    <div class="produto-col">Quantidade</div>
+                </div>
+                <ul id="produtos">
+                    <li>
+                        <form @submit.prevent="confirmaEdicao(produtoSelecionado)">
+                            <input class="addP" type="text" v-model="produtoSelecionado.nome" placeholder="Nome do Produto" required>
+                            <input class="addP" type="number" v-model="produtoSelecionado.valor" placeholder="Preço do Produto" required>
+                            <input class="addP" type="number" v-model="produtoSelecionado.quantidadeEstoque" placeholder="Quantidade do Produto" required>
+                            <button class="addP" id="addP2" type="submit">Confirmar</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script src="/JS/produto.js" type="module"></script>
+</body>
+
+</html>

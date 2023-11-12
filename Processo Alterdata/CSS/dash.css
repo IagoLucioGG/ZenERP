@@ -1,0 +1,118 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e2b40;
+    color: white;
+
+}
+
+
+
+
+header {
+    color: white;
+    padding: 5px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headr {
+    background-color: black;
+    box-shadow: 0 1px 5px #334663;
+    position: fixed;
+    width: 100%;
+    left: -2px;
+    top: -2px;
+    z-index: 1000;
+}
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+}
+
+.site-name {
+    font-size: 35px;
+}
+
+nav {
+    text-align: left; 
+}
+
+nav ul {
+    list-style: none;
+    display: inline; 
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    font-size: 18px;
+    margin-left: 20px; 
+    display: inline;
+    position: relative;
+    left: -30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+#icons {
+    width: 25px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.cards {
+    text-align: center;
+    position: relative;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card {
+    border: 1px solid #ccc;
+    padding: 3px;
+    margin: 4px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #0c121d;
+    background-color: #4b6387;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    width: 350px;
+    height: 70px;
+}
+
+
+.tituloCard {
+    font-size: 20px;
+    background-color: #4b6387;
+    padding: 5px;
+    border: double 5px #1e2b40;
+    border-radius: 5px;
+}
+
+
+#produtosComMaiorQuantidade{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+

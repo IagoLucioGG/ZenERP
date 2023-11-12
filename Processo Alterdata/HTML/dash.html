@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ZenERP</title>
+    <link rel="stylesheet" type="text/css" href="/css/dash.css">
+    <link rel="shortcut icon" href="/Icons/erp.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="headr" id="app">
+            <header>
+                <div class="site-name">
+                    <img src="/Icons/erp.png" id="icons" alt="" srcset="">
+                    ZenERP
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="clientes.html">Clientes</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                        <li><a href="index.html">Sair</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+        <div class="cards">
+
+            <div id="quantidadeTotalCliente">
+                <h1 class="tituloCard">Quantidade Total de Clientes.</h1>
+                <div class="card">
+                    <h1 v-if="quantidadeTotalClientes">{{quantidadeTotalClientes}}</h1>
+                </div>
+            </div>
+
+            <div id="quantidadeTotalProduto">
+                <h1 class="tituloCard">Quantidade Total de produtos.</h1>
+                <div class="card">
+                    <h1 v-if="quantidadeTotalProdutos">{{quantidadeTotalProdutos}}</h1>
+                </div>
+            </div>
+
+            <div id="produtosComMaiorQuantidade">
+                <h1 class="tituloCard">Top 10 Produtos com Maior Quantidade em Estoque</h1>
+
+                <div  v-if="produtosComMaiorQuantidade.length > 0">
+                    <div  class="card" v-for="produto in produtosComMaiorQuantidade" :key="produto.id">
+                        <h2>{{ produto.nome }}</h2>
+                        <h4>Estoque: {{ produto.quantidadeEstoque }}</h4>
+                    </div>
+                </div>
+                <p v-else>Nenhum produto encontrado.</p>
+            </div>
+            <footer>
+                <p>&copy; 2023 Iago Lucio</p>
+            </footer>
+
+        </div>
+
+
+
+
+
+    </div>
+
+    
+
+
+
+
+    <script src="/JS/dash.js"></script>
+
+</body>
+
+</html>
