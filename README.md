@@ -28,7 +28,7 @@ O ZenERP foi desenvolvido para fornecer às empresas uma ferramenta de gestão v
 Como Usar
 Clone este repositório em seu ambiente de desenvolvimento:
 
-git clone https://github.com/seu-usuario/zen-erp.git
+git clone https://github.com/IagoLucioGG/ZenERP.git
 Navegue para a pasta correspondente à tela que deseja acessar.
 
 Abra os arquivos HTML no seu navegador para visualizar a interface da tela.
